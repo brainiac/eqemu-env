@@ -42,7 +42,7 @@ if __name__ != "__main__":
 
 this_dir = os.path.dirname(os.path.realpath(__file__))
 templates_dir = os.path.join(this_dir, "config_templates")
-configs_dir = os.path.normpath(os.path.join(this_dir, "..", "configs"))
+configs_dir = os.path.normpath(os.path.join(this_dir, "..", "server"))
 
 environ = load_environment()
 

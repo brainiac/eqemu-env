@@ -15,5 +15,8 @@ if [ ! -e /home/vagrant/.system-updated ]; then
 	sudo apt-get -y install libperl-dev
 	sudo apt-get -y install python python-pip
 
+	# for convenience...
+	sudo apt-get -y install vim
+
 	su -c "touch /home/vagrant/.system-updated" vagrant
 fi

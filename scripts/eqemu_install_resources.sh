@@ -9,7 +9,7 @@ echo "Installing EQEmu Resources... $EQEMU_HOME"
 #
 mkdir -p $EQEMU_HOME/server/logs
 mkdir -p $EQEMU_HOME/source
-mkdir -p $EQEMU_HOME/server/maps
+mkdir -p $EQEMU_HOME/server/Maps
 mkdir -p $EQEMU_HOME/server/quests
 mkdir -p $EQEMU_HOME/server/plugins
 
@@ -28,7 +28,7 @@ fi
 
 if [ ! -e maps ]; then
 	echo "Downloading Maps"
-	svn co http://eqemumaps.googlecode.com/svn/trunk/Maps maps
+	svn co http://eqemumaps.googlecode.com/svn/trunk/Maps
 fi
 
 if [ ! -e alloclone-eoc-read-only ]; then
@@ -41,7 +41,7 @@ fi
 
 # Now copy from the source directories to the SERVER directories as necessary
 echo "Installing Maps"
-cp -r $EQEMU_HOME/source/Maps/* $EQEMU_HOME/server/maps/
+cp -r $EQEMU_HOME/source/Maps/* $EQEMU_HOME/server/Maps/
 
 echo "Installing Quests"
 cp -r $EQEMU_HOME/source/quests/* $EQEMU_HOME/server/quests/
