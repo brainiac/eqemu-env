@@ -6,7 +6,7 @@ Vagrant::Config.run do |config|
 	config.vm.host_name = "eqemu-dev"	
 	config.vm.network :bridged
 
-	config.vm.share_folder "v-scripts", "/home/vagrant/setup_scripts", "provisioning/scripts"
+	config.vm.share_folder "v-scripts", "/home/vagrant/setup_scripts", "scripts"
 
 	# Enable and configure the chef solo provisioner
 	config.vm.provision :chef_solo do |chef|
@@ -31,6 +31,6 @@ Vagrant::Config.run do |config|
 		})
 	end
 
-	config.vm.provision :shell, :path => "provisioning/scripts/package_setup.sh"
-	config.vm.provision :shell, :path => "provisioning/scripts/eqemu_initial_setup.sh"
+	config.vm.provision :shell, :path => "scripts/package_setup.sh"
+	config.vm.provision :shell, :path => "scripts/eqemu_initial_setup.sh"
 end
