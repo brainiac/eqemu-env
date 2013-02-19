@@ -3,8 +3,8 @@
 	<world>
 		<shortname>$EQEMU_SERVER_SHORTNAME</shortname>
 		<longname>$EQEMU_SERVER_LONGNAME</longname>
-		<address>$EQEMU_VM_HOSTNAME</address>
-		<localaddress>$EQEMU_VM_EXT_IP/localaddress>
+		<address>$EQEMU_VM_EXT_IP</address>
+		<localaddress>$EQEMU_VM_EXT_IP</localaddress>
 
 		<!-- Loginserver information. Defaults shown -->
 		<loginserver>
@@ -40,12 +40,19 @@
 	</zones>
 
 	<database>
-		<host>$EQEMU_VM_EXT_IP</host>
+		<host>$EQEMU_VM_INT_IP</host>
 		<port>3306</port>
 		<username>$EQEMU_MYSQL_USERNAME</username>
 		<password>$EQEMU_MYSQL_PASSWORD</password>
 		<db>$EQEMU_MYSQL_DATABASE</db>
 	</database>
+	<qsdatabase>
+		<host>$EQEMU_VM_INT_IP</host>
+		<port>3306</port>
+		<username>$EQEMU_MYSQL_USERNAME</username>
+		<password>$EQEMU_MYSQL_PASSWORD</password>
+		<db>$EQEMU_MYSQL_DATABASE</db>
+	</qsdatabase>
 
 	<!-- Launcher Configuration -->
 	<launcher>

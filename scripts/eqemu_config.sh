@@ -29,7 +29,7 @@ export EQEMU_MYSQL_PASSWORD=eqemupw
 # name of the database to use for the emulator
 export EQEMU_MYSQL_DATABASE=peqdb
 
-# Admin user name and password
+# Admin/GM user name and password
 export EQEMU_ADMIN_USERNAME=admin
 export EQEMU_ADMIN_PASSWORD=password
 

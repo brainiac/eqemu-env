@@ -16,17 +16,13 @@ mkdir -p $EQEMU_HOME/server/plugins
 cd $EQEMU_HOME/source
 
 # get the most recent copies of items, quests, maps, etc
-if [ ! -e peqdatabase ]; then
-	echo "Downloading Database"
-	svn co http://projecteqdb.googlecode.com/svn/trunk/peqdatabase
-fi
 
 if [ ! -e quests ]; then
 	echo "Downloading Quests"
 	svn co http://projecteqquests.googlecode.com/svn/trunk/quests
 fi
 
-if [ ! -e maps ]; then
+if [ ! -e Maps ]; then
 	echo "Downloading Maps"
 	svn co http://eqemumaps.googlecode.com/svn/trunk/Maps
 fi

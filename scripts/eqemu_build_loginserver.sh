@@ -10,6 +10,7 @@ if [ ! -e $SOURCE_PATH ]; then
 fi
 
 cd $SOURCE_PATH
+
 if [ ! -f dependencies/libcryptopp.a -o ! -f dependencies/libEQEmuAuthCrypto.a ]; then
 	echo
 	echo "\033[1;92mFetching login crypto libraries...\033[0m"
@@ -52,7 +53,7 @@ if [ -e "/home/vagrant/server/loginserver" ]; then
 fi
 
 cd /home/vagrant/server
-cp -fv $SOURCE_PATH/build/Bin/loginserver .
+ln -s -v $SOURCE_PATH/build/Bin/loginserver .
 cp -fv $SOURCE_PATH/loginserver/login_util/login_opcodes.conf .
 cp -fv $SOURCE_PATH/loginserver/login_util/login_opcodes_sod.conf .
 

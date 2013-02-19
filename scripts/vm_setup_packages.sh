@@ -17,6 +17,7 @@ if [ ! -e /home/vagrant/.system-updated ]; then
 
 	# for convenience...
 	sudo apt-get -y install vim
+	sudo apt-get -y install gdb
 
 	su -c "touch /home/vagrant/.system-updated" vagrant
 fi

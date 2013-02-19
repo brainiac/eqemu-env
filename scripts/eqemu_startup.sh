@@ -1,17 +1,17 @@
 #!/bin/bash
 
-set SERVERPATH=/home/vagrant/server
+SERVERPATH=/home/vagrant/server
 
 ulimit -c unlimited
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$SERVERPATH
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.
 
 cd $SERVERPATH
 rm -f $SERVERPATH/logs/*.log
 
-if [ -e EQEmuLoginServer ]; then
+if [ -f loginserver ]; then
 	echo "Starting login server..."
-	./EQEmuLoginServer 2>&1 > $SERVERPATH/logs/login.log &
+	./loginserver 2>&1 > $SERVERPATH/logs/login.log &
 
 	echo "Waiting about 5 seconds before starting world server..."
 	sleep 5
