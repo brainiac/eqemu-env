@@ -11,7 +11,7 @@ Vagrant::Config.run do |config|
 	# Enable and configure the chef solo provisioner
 	config.vm.provision :chef_solo do |chef|
 		chef.cookbooks_path = "provisioning/chef"
-		chef.log_level = :debug
+		#chef.log_level = :debug
 
 		chef.run_list = [
 			"recipe[apt]",
@@ -31,6 +31,7 @@ Vagrant::Config.run do |config|
 		})
 	end
 
-	config.vm.provision :shell, :path => "scripts/package_setup.sh"
-	config.vm.provision :shell, :path => "scripts/eqemu_initial_setup.sh"
+	config.vm.provision :shell, :path => "scripts/vm_setup_packages.sh"
+	config.vm.provision :shell, :path => "scripts/vm_configure_shared_mem.sh"
+	config.vm.provision :shell, :path => "scripts/vm_finalize_setup.sh"
 end

@@ -1,0 +1,71 @@
+<?xml version="1.0">
+<server>
+	<world>
+		<shortname>$EQEMU_SERVER_SHORTNAME</shortname>
+		<longname>$EQEMU_SERVER_LONGNAME</longname>
+		<address>$EQEMU_VM_HOSTNAME</address>
+		<localaddress>$EQEMU_VM_EXT_IP/localaddress>
+
+		<!-- Loginserver information. Defaults shown -->
+		<loginserver>
+			<host>$EQEMU_VM_EXT_IP</host>
+			<port>5998</port>
+			<account>Admin</account>
+			<password>Password</password>
+		</loginserver>
+
+		<!-- Server status. Default is unlocked -->
+		<!--<locked/>-->
+		<unlocked />
+
+		<tcp ip=$EQEMU_VM_EXT_IP port=9000 telnet=disable />
+		<key>$EQEMU_RANDOM_KEY</key>
+		<http port="9080" enabled="false" mimefile="mime.types" />
+	</world>
+
+	<!-- Chatserver (channels) information. Defaults shown -->
+	<chatserver>
+		<host>$EQEMU_VM_EXT_IP</host>
+		<port>7778</port>
+	</chatserver>
+
+	<mailserver>
+		<host>$EQEMU_VM_EXT_IP</host>
+		<port>7779</port>
+	</mailserver>
+
+	<zones>
+		<defaultstatus>20</defaultstatus>
+		<ports low="7000" high="7100"/>
+	</zones>
+
+	<database>
+		<host>$EQEMU_VM_EXT_IP</host>
+		<port>3306</port>
+		<username>$EQEMU_MYSQL_USERNAME</username>
+		<password>$EQEMU_MYSQL_PASSWORD</password>
+		<db>$EQEMU_MYSQL_DATABASE</db>
+	</database>
+
+	<!-- Launcher Configuration -->
+	<launcher>
+		<!-- <logprefix>logs/zone-</logprefix> -->
+		<!-- <logsuffix>.log</logsuffix> -->
+		<!-- <exe>zone.exe or ./zone</exe> -->
+		<!-- <timers restart="10000" reterminate="10000"> -->
+	</launcher>
+
+	<!-- File locations. Defaults shown -->
+	<files>
+		<spells>spells_us.txt</spells>
+		<opcodes>opcodes.conf</opcodes>
+		<logsettings>log.ini</logsettings>
+	</files>
+
+	<!-- Directory locations. Defaults shown -->
+	<directories>
+		<maps>$EQEMU_HOME/server/maps</maps>
+		<quests>$EQEMU_HOME/server/quests</quests>
+		<plugins>$EQEMU_HOME/server/plugins</plugins>
+	</directories>
+</server>
