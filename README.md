@@ -1,10 +1,18 @@
 
-This is a development environment for the EQEmulator project based on Ubuntu 12.04 (Precise PAngolin 32bit)
+This is a development environment for the EQEmulator project based on Ubuntu 12.04 (Precise Pangolin 32bit). It will set up everything required to run an eqemu development server.
 
-Currently it does the following:
-* checks out maps
-* checks out quests
-* creates initial database
+If you don't have Vagrant, install that first. Find it at http://www.vagrantup.com
+Then do:
 
-This is a work in progress. Server configuration is still a TODO.
+    $ vagrant up
+
+Once the VM is up and running, you can then ssh into the vm and start the environment construction:
+
+    $ vagrant ssh
+    
+    $ scripts/eqemu_initial_setup.sh --with-source
+
+Currently, the --with-source argument is required, but in the future downloading source inside the VM will be optional. Instead, you will be able to provide the source from the host.
+
+The idea is that you can edit the source on your host machine, and build/run the source in the vm.
 
