@@ -7,6 +7,7 @@ Vagrant::Config.run do |config|
 	config.vm.network :bridged
 
 	config.vm.share_folder "v-scripts", "/home/vagrant/scripts", "scripts"
+	config.vm.share_folder "v-source", "/home/vagrant/source/host-env", "."
 
 	# Enable and configure the chef solo provisioner
 	config.vm.provision :chef_solo do |chef|
