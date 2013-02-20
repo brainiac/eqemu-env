@@ -17,7 +17,7 @@ export EQEMU_VM_EXT_IP=`ifconfig eth1 | grep "inet addr:" | awk -F: '{ print $2 
 export EQEMU_HOME=/home/vagrant
 
 # Name of the shared scripts folder within the vm
-export EQEMU_VM_SCRIPTS_SHARE=setup_scripts
+export EQEMU_VM_SCRIPTS_SHARE=scripts
 
 # root password of the mysql installation
 export EQEMU_MYSQL_ROOTPW=password

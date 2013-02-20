@@ -1,8 +1,6 @@
 #!/bin/sh
 
-. /home/vagrant/setup_scripts/eqemu_config.sh
-
-echo "Installing EQEmu Resources... $EQEMU_HOME"
+. /home/vagrant/scripts/eqemu_config.sh
 
 #
 # Prepare everything by making necessary directories
@@ -18,30 +16,26 @@ cd $EQEMU_HOME/source
 # get the most recent copies of items, quests, maps, etc
 
 if [ ! -e quests ]; then
-	echo "Downloading Quests"
+	echo
+	echo "\033[1;92mDownloading Quests...\033[0m"
 	svn co http://projecteqquests.googlecode.com/svn/trunk/quests
 fi
 
-if [ ! -e Maps ]; then
-	echo "Downloading Maps"
-	svn co http://eqemumaps.googlecode.com/svn/trunk/Maps
-fi
-
-if [ ! -e alloclone-eoc-read-only ]; then
-	echo "Downloading AllaClone"
-	svn co http://allaclone-eoc.googlecode.com/svn/trunk/ allaclone-eoc-read-only
-fi
-
-# This next part should probably be broken out into another script so we can
-# run it again later...
-
-# Now copy from the source directories to the SERVER directories as necessary
-echo "Installing Maps"
-cp -r $EQEMU_HOME/source/Maps/* $EQEMU_HOME/server/Maps/
-
-echo "Installing Quests"
+echo
+echo "\033[1;92mInstalling Quests...\033[0m"
 cp -r $EQEMU_HOME/source/quests/* $EQEMU_HOME/server/quests/
+rm -rf $EQEMU_HOME/server/quests/plugins
 
 cp -r $EQEMU_HOME/source/quests/plugins/* $EQEMU_HOME/server/plugins/
 
-# TODO: Setup login server sources?
+if [ ! -e Maps ]; then
+	echo
+	echo "\033[1;92mDownloading Maps...\033[0m"
+	svn co http://eqemumaps.googlecode.com/svn/trunk/Maps
+fi
+
+# Now copy from the source directories to the SERVER directories as necessary
+echo
+echo "\033[1;92mInstalling Maps...\033[0m"
+cp -r $EQEMU_HOME/source/Maps/* $EQEMU_HOME/server/Maps/
+

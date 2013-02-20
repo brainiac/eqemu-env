@@ -3,6 +3,7 @@
 # Builds and configures the login server
 
 SOURCE_PATH=/home/vagrant/source/EQEmuServer
+BUILD_PATH=/home/vagrant/source/build
 
 if [ ! -e $SOURCE_PATH ]; then
 	echo "\033[1;91mCould not find emu source. Make sure it is checked out\033[0m"
@@ -11,16 +12,16 @@ fi
 
 cd $SOURCE_PATH
 
-if [ ! -d build ]; then
-	mkdir build
+if [ ! -d $BUILD_PATH ]; then
+	mkdir $BUILD_PATH
 fi
 
 echo
 echo "\033[1;92mRunning CMake...\033[0m"
 
 # build just the login server
-cd build
-cmake .. -DEQEMU_BUILD_LOGIN=ON
+cd $BUILD_PATH
+cmake $SOURCE_PATH -DEQEMU_BUILD_LOGIN=ON
 
 if [ "$?" -ne 0 ]; then
 	echo "\033[1;91mRunning CMake on EQEmuServer failed.\033[0m"
@@ -49,8 +50,8 @@ do
 		unlink /home/vagrant/server/$file
 	fi
 
-	if [ -f $SOURCE_PATH/build/Bin/$file ]; then
-		cp -f -v $SOURCE_PATH/build/Bin/$file $file
+	if [ -f $BUILD_PATH/Bin/$file ]; then
+		cp -f -v $BUILD_PATH/Bin/$file $file
 	fi
 done
 

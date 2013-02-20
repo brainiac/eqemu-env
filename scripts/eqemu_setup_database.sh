@@ -1,15 +1,12 @@
 #!/bin/sh
 
-. /home/vagrant/setup_scripts/eqemu_config.sh
-
-echo
-echo "Loading ProjectEQ database"
-echo
+. /home/vagrant/scripts/eqemu_config.sh
 
 cd $EQEMU_HOME/source
 
 if [ ! -d peqdatabase ]; then
-	echo "Downloading Database"
+	echo
+	echo "\033[1;92mDownloading Database...\033[0m"
 	svn co http://projecteqdb.googlecode.com/svn/trunk/peqdatabase
 fi
 
@@ -27,9 +24,11 @@ rm db_users.sql
 # Get ready to load the database
 mysql -u root -p$EQEMU_MYSQL_ROOTPW -e "drop database if exists $EQEMU_MYSQL_DATABASE; create database if not exists $EQEMU_MYSQL_DATABASE;"
 
+echo
+echo "\033[1;92mImporting Database...\033[0m"
+
 for a in *.gz; do gunzip -c $a > `echo $a | sed s/.gz//`; done
 
-echo "Importing SQL..."
 for file in peqdb_*.sql; do
 	echo "Importing $file..."
 	mysql -u root -p$EQEMU_MYSQL_ROOTPW -f -D $EQEMU_MYSQL_DATABASE < $file
@@ -42,8 +41,6 @@ do
 done
 
 cp -f -v eqtime.cfg /home/vagrant/server/
-
-# TODO: Load additional sql files?
 
 mysql -u root -p$EQEMU_MYSQL_ROOTPW -f -D $EQEMU_MYSQL_DATABASE < $EQEMU_HOME/source/EQEmuServer/loginserver/login_util/EQEmuLoginServerDBInstall.sql
 

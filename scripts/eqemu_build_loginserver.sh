@@ -3,6 +3,7 @@
 # Builds and configures the login server
 
 SOURCE_PATH=/home/vagrant/source/EQEmuServer
+BUILD_PATH=/home/vagrant/source/build
 
 if [ ! -e $SOURCE_PATH ]; then
 	echo "\033[1;91mCould not find login source. Make sure it is checked out\033[0m"
@@ -22,16 +23,16 @@ if [ ! -f dependencies/libcryptopp.a -o ! -f dependencies/libEQEmuAuthCrypto.a ]
 	rm ubuntu_LoginServerCrypto_x86.zip
 fi
 
-if [ ! -d build ]; then
-	mkdir build
+if [ ! -d $BUILD_PATH ]; then
+	mkdir -p $BUILD_PATH
 fi
 
 echo
 echo "\033[1;92mBuilding loginserver...\033[0m"
 
 # build just the login server
-cd build
-cmake .. -DEQEMU_BUILD_LOGIN=ON
+cd $BUILD_PATH
+cmake $SOURCE_PATH -DEQEMU_BUILD_LOGIN=ON
 
 if [ "$?" -ne 0 ]; then
 	echo "\033[1;91mRunning CMake on EQEmuServer failed.\033[0m"
@@ -53,7 +54,7 @@ if [ -e "/home/vagrant/server/loginserver" ]; then
 fi
 
 cd /home/vagrant/server
-ln -s -v $SOURCE_PATH/build/Bin/loginserver .
+ln -s -v $BUILD_PATH/Bin/loginserver .
 cp -fv $SOURCE_PATH/loginserver/login_util/login_opcodes.conf .
 cp -fv $SOURCE_PATH/loginserver/login_util/login_opcodes_sod.conf .
 
