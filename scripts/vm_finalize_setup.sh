@@ -10,7 +10,7 @@ if [ ! -e /home/vagrant/build.sh ]; then
 	ln -s /home/vagrant/scripts/eqemu_build_emuserver.sh /home/vagrant/build.sh
 fi
 
-. /home/vagrant/scripts/eqemu_initial_setup.sh
+. /home/vagrant/scripts/eqemu_config.sh
 
 echo
 echo "Construction of the VM is now complete. You can now log in by running:"
