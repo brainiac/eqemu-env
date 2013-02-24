@@ -6,7 +6,7 @@ SCRIPTS_PATH=/home/vagrant/scripts
 . $SCRIPTS_PATH/eqemu_config.sh
 
 # Load up arguments
-FETCH_SOURCE=
+FETCH_SOURCE=false
 while true; do
 	case "$1" in
 		--with-source ) FETCH_SOURCE=true; shift ;;
@@ -19,14 +19,14 @@ done
 python $SCRIPTS_PATH/eqemu_transfer_configs.py
 
 # fetch source code if we require it
-if $FETCH_SOURCE ; then
+if $FETCH_SOURCE; then
 	$SCRIPTS_PATH/eqemu_fetch_source.sh
 else
 	$SCRIPTS_PATH/eqemu_setup_source.sh
 fi
 
 if [ ! -d /home/vagrant/source/EQEmuServer ]; then
-	echo "\033[1;91mCould not find source...\033[0m"
+	echo -e "\033[1;91mCould not find source...\033[0m"
 	exit 1
 fi
 

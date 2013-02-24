@@ -10,6 +10,10 @@ if [ ! -e /home/vagrant/build.sh ]; then
 	ln -s /home/vagrant/scripts/eqemu_build_emuserver.sh /home/vagrant/build.sh
 fi
 
+if [ -d /home/vagrant/source ]; then
+	sudo chown vagrant:vagrant source
+fi
+
 . /home/vagrant/scripts/eqemu_config.sh
 
 echo

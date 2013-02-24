@@ -13,10 +13,10 @@ if [ -d $HOST_SOURCE ]; then
 	fi
 
 	if [ -e $HOST_SOURCE/Source ]; then
-		echo "Found source at `pwd`/Source"
+		echo "Found source at $HOST_SOURCE/Source"
 		ln -s $HOST_SOURCE/Source /home/vagrant/source/EQEmuServer
 	elif [ -e $HOST_SOURCE/EQEmuServer ]; then
-		echo "Found source at `pwd`/EQEmuServer"
+		echo "Found source at $HOST_SOURCE/EQEmuServer"
 		ln -s $HOST_SOURCE/EQEmuServer /home/vagrant/source/EQEmuServer
 	else
 		echo "Not sure what your source folder is called. Try 'Source' or 'EQEmuServer'"

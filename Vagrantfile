@@ -34,5 +34,5 @@ Vagrant::Config.run do |config|
 
 	config.vm.provision :shell, :path => "scripts/vm_setup_packages.sh"
 	config.vm.provision :shell, :path => "scripts/vm_configure_shared_mem.sh"
-	config.vm.provision :shell, :path => "scripts/vm_finalize_setup.sh"
+	config.vm.provision :shell, :inline => "su -c /home/vagrant/scripts/vm_finalize_setup.sh vagrant"
 end
